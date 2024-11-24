@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "nodejs-express.fullname" . }}
-  labels:
-    {{- include "nodejs-express.labels" . }}
+  labels: {{- include "nodejs-express.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
