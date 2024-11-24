@@ -24,7 +24,7 @@ deploy:
     name: production
   script:
     - echo "Deploying application to Kubernetes..."
-    - kubectl apply -f deployment.yaml
+    - kubectl apply -f charts/templates/deployment.yaml
     - kubectl rollout status deployment/$APP_NAME
   tags:
     - macos
