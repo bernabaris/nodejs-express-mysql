@@ -6,6 +6,8 @@ variables:
   APP_NAME: "nodejs-express-mysql"
   DOCKER_IMAGE: "registry.gitlab.com/bernabaris/nodejs-express-mysql"
 
+before_script:
+  - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
 build:
   stage: build
   script:
