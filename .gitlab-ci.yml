@@ -6,7 +6,7 @@ variables:
   APP_NAME: "nodejs-express-mysql"
   DOCKER_IMAGE: "registry.gitlab.com/bernabaris/nodejs-express-mysql"
 
-build:
+build-job:
   stage: build
   script:
     - echo "Hello, $GITLAB_USER_LOGIN!"
@@ -14,7 +14,7 @@ build:
     - docker build -t $DOCKER_IMAGE:$CI_COMMIT_SHA .
     - docker push $DOCKER_IMAGE:$CI_COMMIT_SHA
 
-deploy:
+deploy-prod:
   stage: deploy
   environment:
     name: production
@@ -25,5 +25,5 @@ deploy:
 
 job:
   tags:
-    - macoss
+    - macos
 
