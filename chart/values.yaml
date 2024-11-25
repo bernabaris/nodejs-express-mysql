@@ -26,3 +26,7 @@ service:
   type: LoadBalancer
   port: 8080
   nodePort: 30500
+
+mysql:
+  auth:
+    rootPassword: root
