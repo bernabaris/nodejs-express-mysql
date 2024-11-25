@@ -8,6 +8,7 @@ variables:
 
 before_script:
   - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+
 build:
   stage: build
   script:
@@ -26,8 +27,8 @@ deploy:
     name: alpine/helm:3.2.1
     entrypoint: [""]
   script:
+    - echo "Deploying application with Helm..."
     - helm upgrade ${APP_NAME} ./charts --install --namespace ${APP_NAME}
   rules:
     - if: $CI_COMMIT_BRANCH == 'master'
       when: always
-
