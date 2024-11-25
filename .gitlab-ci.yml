@@ -41,7 +41,8 @@ deploy:
 
     - curl -L https://get.helm.sh/helm-v$HELM_VERSION-linux-amd64.tar.gz | tar xz
     - mv linux-amd64/helm /usr/bin/
-    - helm dependency build
+    - helm repo add bitnami https://charts.bitnami.com/bitnami
+    - helm dependency build ./chart
     - helm upgrade ${APP_NAME} ./chart --install --namespace $NAMESPACE
   rules:
     - if: $CI_COMMIT_BRANCH == 'master'
