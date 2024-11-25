@@ -22,9 +22,11 @@ deploy:
   stage: deploy
   environment:
     name: production
-  image: alpine/helm:3.2.1
+  image:
+    name: alpine/helm:3.2.1
+    entrypoint: [""]
   script:
-    - helm upgrade ${APP_NAME} ./charts --install --values=./charts/values.yaml --namespace ${APP_NAME}
+    - helm upgrade ${APP_NAME} ./charts --install --namespace ${APP_NAME}
   rules:
     - if: $CI_COMMIT_BRANCH == 'master'
       when: always
