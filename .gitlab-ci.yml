@@ -2,6 +2,9 @@ stages:
   - build
   - deploy
 
+services:
+  - docker:dind
+
 variables:
   APP_NAME: "nodejs-express-mysql"
   DOCKER_IMAGE: "registry.gitlab.com/bernabaris/nodejs-express-mysql"
@@ -16,7 +19,7 @@ variables:
 build:
   stage: build
   image:
-    name: docker:19.03.12
+    name: docker:latest
   before_script:
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
   script:
