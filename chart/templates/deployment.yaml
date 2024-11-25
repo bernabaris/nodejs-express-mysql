@@ -2,29 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "nodejs-express.fullname" . }}
-  labels: {{- include "nodejs-express.labels" . | nindent 4 }}
+  labels:
+    {{- include "nodejs-express.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "nodejs-express.selectorLabels" . }}
+      {{- include "nodejs-express.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "nodejs-express.selectorLabels" . }}
+        {{- include "nodejs-express.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . }}
-      {{- end }}
       serviceAccountName: {{ include "nodejs-express.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext }}
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext }}
-          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
@@ -38,17 +31,3 @@ spec:
             httpGet:
               path: /
               port: http
-          resources:
-            {{- toYaml .Values.resources }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . }}
-      {{- end }}
