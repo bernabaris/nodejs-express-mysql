@@ -28,5 +28,4 @@ deploy:
   rules:
     - if: $CI_COMMIT_BRANCH == 'master'
       when: always
-  tags:
-    - macos
+
