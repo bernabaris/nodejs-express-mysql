@@ -28,6 +28,7 @@ service:
   nodePort: 30500
 
 mysql:
+  fullnameOverride: mysql
   auth:
     rootPassword: root
     database: nodejs_express
