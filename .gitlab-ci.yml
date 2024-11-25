@@ -5,6 +5,9 @@ stages:
 variables:
   APP_NAME: "nodejs-express-mysql"
   DOCKER_IMAGE: "registry.gitlab.com/bernabaris/nodejs-express-mysql"
+  GCP_PROCET_ID: "nodejs-express-project"
+  GKE_CLUSTER_NAME: "nodejs-express-cluster"
+  GKE_CLUSTER_ZONE: "us-central1-c"
 
 build:
   stage: build
@@ -23,10 +26,15 @@ deploy:
   environment:
     name: production
   image:
-    name: alpine/helm:3.2.1
+    name: google/cloud-sdk:latest
     entrypoint: [""]
   script:
     - echo "Deploying application with Helm..."
+    - echo "$GCP_SERVICE_ACCOUNT_KEY" > key.json
+    - gcloud auth activate-service-account --key-file=key.json
+    - gcloud config set project $GCP_PROJECT_ID
+    - gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone $GKE_CLUSTER_ZONE
+
     - helm upgrade ${APP_NAME} ./charts --install --namespace ${APP_NAME}
   rules:
     - if: $CI_COMMIT_BRANCH == 'master'
