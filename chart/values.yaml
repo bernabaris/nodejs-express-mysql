@@ -34,11 +34,3 @@ mysql:
     database: nodejs_express
     username: admin
     password: admin12345Wq!
-  primary:
-    resourcesPreset: none
-    livenessProbe:
-      enabled: false
-    readinessProbe:
-      enabled: false
-    startupProbe:
-      enabled: false
