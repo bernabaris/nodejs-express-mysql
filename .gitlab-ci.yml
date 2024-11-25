@@ -6,6 +6,7 @@ variables:
   APP_NAME: "nodejs-express-mysql"
   DOCKER_IMAGE: "registry.gitlab.com/bernabaris/nodejs-express-mysql"
   GCP_PROCET_ID: "nodejs-express-project"
+  GCP_PROJECT_NAME: "nodejs-express-project"
   GKE_CLUSTER_NAME: "nodejs-express-cluster"
   GKE_CLUSTER_ZONE: "us-central1-c"
 
