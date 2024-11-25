@@ -23,11 +23,8 @@ build:
 
 deploy:
   stage: deploy
-  environment:
-    name: production
   image:
-    name: google/cloud-sdk:latest
-    entrypoint: [""]
+    name: google/cloud-sdk
   script:
     - echo "Deploying application with Helm..."
     - echo "$GCP_SERVICE_ACCOUNT_KEY" > key.json
