@@ -31,3 +31,10 @@ spec:
             httpGet:
               path: /
               port: http
+          volumeMounts:
+            - name: config-volume
+              mountPath: /usr/src/app/app/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: db-config

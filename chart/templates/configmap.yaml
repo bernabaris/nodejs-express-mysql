@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  db.config.js: |
+    module.exports = {
+      HOST: "{{ .Values.mysql.fullnameOverride }}",
+      USER: "{{ .Values.mysql.auth.username }}",
+      PASSWORD: "{{ .Values.mysql.auth.password }}",
+      DB: "{{ .Values.mysql.auth.database }}"
+    };
