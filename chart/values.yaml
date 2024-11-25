@@ -30,3 +30,6 @@ service:
 mysql:
   auth:
     rootPassword: root
+    database: nodejs_express
+    username: admin
+    password: admin12345Wq!
