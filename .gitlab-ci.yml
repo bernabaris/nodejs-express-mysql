@@ -28,8 +28,6 @@ deploy:
   image:
     name: google/cloud-sdk:latest
     entrypoint: [""]
-  before_script:
-    - cat $gcp_key | docker login -u _json_key --password-stdin https://eu.gcr.io
   script:
     - echo "Deploying application with Helm..."
     - gcloud auth activate-service-account --key-file=$GCP_SERVICE_ACCOUNT_KEY
