@@ -8,7 +8,17 @@ const Tutorial = function(tutorial) {
 };
 
 Tutorial.tableCreate = (result) => {
-  sql.query("CREATE TABLE IF NOT EXISTS tutorials", (err) => {
+  const sqlQuery = `
+    CREATE TABLE IF NOT EXISTS tutorials (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      title VARCHAR(255) NOT NULL,
+      description TEXT,
+      published BOOLEAN DEFAULT false,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `;
+
+  sql.query(sqlQuery, (err) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
