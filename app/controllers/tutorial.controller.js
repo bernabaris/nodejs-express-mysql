@@ -1,5 +1,16 @@
 const Tutorial = require("../models/tutorial.model.js");
 
+exports.tableCreate = (req, res) => {
+  Tutorial.tableCreate((err) => {
+    if (err)
+      res.status(500).send({
+        message:
+            err.message || "Some error occurred while creating the table."
+      });
+    else res.send(null);
+  });
+}
+
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request

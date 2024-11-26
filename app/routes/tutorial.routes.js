@@ -3,6 +3,8 @@ module.exports = app => {
 
   var router = require("express").Router();
 
+  router.post("/createTable", tutorials.tableCreate)
+
   // Create a new Tutorial
   router.post("/", tutorials.create);
 
