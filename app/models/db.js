@@ -9,6 +9,4 @@ var connection = mysql.createPool({
   database: dbConfig.DB
 });
 
-Tutorial.tableCreate(null);
-
 module.exports = connection;
