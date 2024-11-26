@@ -7,6 +7,19 @@ const Tutorial = function(tutorial) {
   this.published = tutorial.published;
 };
 
+Tutorial.tableCreate = (result) => {
+  sql.query("CREATE TABLE IF NOT EXISTS tutorials", (err) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    console.log("created table tutorials");
+    result(null);
+  });
+};
+
 Tutorial.create = (newTutorial, result) => {
   sql.query("INSERT INTO tutorials SET ?", newTutorial, (err, res) => {
     if (err) {
