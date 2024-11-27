@@ -3,6 +3,9 @@ stages:
   - update
   - deploy
 
+services:
+  - docker:dind
+
 variables:
   APP_NAME: "nodejs-express-mysql"
   DOCKER_IMAGE: "registry.gitlab.com/bernabaris/nodejs-express-mysql"
@@ -34,7 +37,7 @@ build:
       - .new_version
   rules:
     - changes:
-        - app/**
+        - chart/**
 
 
 update_chart_version:
@@ -63,11 +66,12 @@ update_chart_version:
     - gcloud auth activate-service-account --key-file=key.json
     - gcloud config set project $GCP_PROJECT_NAME
     - gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone $GKE_CLUSTER_ZONE --project $GCP_PROJECT_NAME
+
     - curl -L https://get.helm.sh/helm-v$HELM_VERSION-linux-amd64.tar.gz | tar xz
     - mv linux-amd64/helm /usr/bin/
     - helm repo add bitnami https://charts.bitnami.com/bitnami
     - helm dependency build ./chart
     - helm upgrade ${APP_NAME} ./chart --install --namespace $NAMESPACE
   rules:
-    - changes:
-        - app/**
+    - if: $CI_COMMIT_BRANCH == 'master'
+      when: always
