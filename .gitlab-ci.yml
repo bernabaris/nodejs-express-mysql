@@ -33,7 +33,7 @@ build:
   artifacts:
     paths:
       - .new_version
-      -
+
 update-chart-version:
   stage: update
   script:
