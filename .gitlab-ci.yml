@@ -37,7 +37,7 @@ build:
       - .new_version
   rules:
     - changes:
-        - chart/**
+        - app/**
 
 
 update_chart_version:
@@ -54,6 +54,10 @@ update_chart_version:
     - git add chart/Chart.yaml
     - git commit -m "ci - Bump appVersion to $NEW_VERSION after Docker push"
     - git push https://ci-cd-token:$CI_CD_TOKEN@gitlab.com/bernabaris/nodejs-express-mysql.git HEAD:$CI_COMMIT_REF_NAME
+  rules:
+    - changes:
+        - app/**
+
   needs: [ "build" ]
 
 .deploy:
