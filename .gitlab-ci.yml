@@ -26,7 +26,7 @@ build:
     - echo "Hello, $GITLAB_USER_LOGIN!"
     - echo "Building application..."
     - echo "Reading current version..."
-    - CURRENT_VERSION=$(yq '.appVersion' chart/Chart.yaml)
+    - CURRENT_VERSION=$(grep '^appVersion:' chart/Chart.yaml | awk '{print $2}')
     - echo "Current version $CURRENT_VERSION"
     - NEW_VERSION=$(echo $CURRENT_VERSION | awk -F. '{$3+=1; print $1"."$2"."$3}')
     - echo "New version $NEW_VERSION"
@@ -41,7 +41,7 @@ update_chart_version:
   script:
     - NEW_VERSION=$(cat .new_version)
     - echo "Updating Chart.yaml with new version $NEW_VERSION"
-    - yq e -i ".appVersion = \"$NEW_VERSION\"" chart/Chart.yaml
+    - sed -i "s/^appVersion: .*/appVersion: \$NEW_VERSION/" chart/Chart.yaml
     - echo "Updated Chart.yaml:"
     - cat chart/Chart.yaml
     - git config --global user.name "GitLab CI"
