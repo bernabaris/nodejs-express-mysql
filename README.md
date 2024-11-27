@@ -9,6 +9,6 @@ In the GitOps paradigm, the entire application deployment process is driven by G
 
 The CI/CD pipeline is divided into three stages:
 
-- **Build**: Builds the Docker image, tags it with the version, and pushes it to the Docker registry.
-- **Update**: Updates the version in the `Chart.yaml` file and pushes it to the repository.
+- **Build**: Builds the Docker image, tags it with the new version, and pushes it to the Docker registry.
+- **Update**: Updates the new version in the `Chart.yaml` file and pushes it to the repository.
 - **Deploy**: Deploys the application to the Google Kubernetes Engine (GKE) cluster using Helm.
