@@ -3,7 +3,6 @@ stages:
   - update
   - deploy
 
-
 services:
   - docker:dind
 
@@ -32,6 +31,7 @@ build:
     - echo "New version $NEW_VERSION"
     - docker build -t $DOCKER_IMAGE:$NEW_VERSION .
     - docker push $DOCKER_IMAGE:$NEW_VERSION
+    - echo $NEW_VERSION > .new_version
   artifacts:
     paths:
       - .new_version
@@ -41,7 +41,7 @@ update_chart_version:
   script:
     - NEW_VERSION=$(cat .new_version)
     - echo "Updating Chart.yaml with new version $NEW_VERSION"
-    - sed -i "s/^appVersion: .*/appVersion: \$NEW_VERSION/" chart/Chart.yaml
+    - sed -i "s/appVersion:.*/appVersion: $NEW_VERSION/" chart/Chart.yaml
     - echo "Updated Chart.yaml:"
     - cat chart/Chart.yaml
     - git config --global user.name "GitLab CI"
