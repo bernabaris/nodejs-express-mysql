@@ -48,6 +48,7 @@ update_chart_version:
     - git config --global user.email "ci@example.com"
     - git add chart/Chart.yaml
     - git commit -m "ci - Bump appVersion to $NEW_VERSION after Docker push"
+    - echo $CI_COMMIT_BRANCH
     - git push origin $CI_COMMIT_BRANCH
   needs: [ "build" ]
 
