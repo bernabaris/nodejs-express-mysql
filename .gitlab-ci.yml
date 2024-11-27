@@ -3,9 +3,6 @@ stages:
   - update
   - deploy
 
-services:
-  - docker:dind
-
 variables:
   APP_NAME: "nodejs-express-mysql"
   DOCKER_IMAGE: "registry.gitlab.com/bernabaris/nodejs-express-mysql"
@@ -37,7 +34,7 @@ build:
       - .new_version
   rules:
     - changes:
-        - app/**
+      - app/**
 
 
 update_chart_version:
