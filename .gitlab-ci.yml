@@ -71,4 +71,4 @@ update_chart_version:
     - helm upgrade ${APP_NAME} ./chart --install --namespace $NAMESPACE
   rules:
     - changes:
-      - chart/**
+      - app/**
