@@ -1,6 +1,7 @@
 stages:
   - build
   - deploy
+  - update-chart-version
 
 services:
   - docker:dind
