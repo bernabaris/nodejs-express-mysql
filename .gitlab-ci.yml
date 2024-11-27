@@ -37,7 +37,7 @@ build:
       - .new_version
   rules:
     - changes:
-        - chart/**
+        - app/**
 
 
 update_chart_version:
