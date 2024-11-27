@@ -41,7 +41,7 @@ update_chart_version:
   script:
     - NEW_VERSION=$(cat .new_version)
     - echo "Updating Chart.yaml with new version $NEW_VERSION"
-    - sed -i "s/appVersion:.*/appVersion: $NEW_VERSION/" chart/Chart.yaml
+    - sed -i "s/appVersion:.*/appVersion:\ $NEW_VERSION/" chart/Chart.yaml
     - echo "Updated Chart.yaml:"
     - cat chart/Chart.yaml
     - git config --global user.name "GitLab CI"
