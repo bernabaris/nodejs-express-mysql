@@ -1,6 +1,6 @@
 stages:
   - build
-  - update-chart-version
+  - update_chart_version
   - deploy
 
 
@@ -36,7 +36,7 @@ build:
     paths:
       - .new_version
 
-update-chart-version:
+update_chart_version:
   stage: update
   script:
     - NEW_VERSION=$(cat .new_version)
