@@ -70,5 +70,5 @@ update_chart_version:
     - helm dependency build ./chart
     - helm upgrade ${APP_NAME} ./chart --install --namespace $NAMESPACE
   rules:
-    - if: $CI_COMMIT_BRANCH == 'master'
-      when: always
+    - changes:
+      - chart/**
