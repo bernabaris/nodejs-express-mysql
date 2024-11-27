@@ -14,24 +14,13 @@ The example GitHub repository was imported into the GitLab platform to create a 
 ---
 
 ### 2. Creating a Dockerfile
-A Dockerfile was created to containerize the Node.js application. Below is the content of the Dockerfile:
-
-```dockerfile
-FROM node:16
-WORKDIR /usr/src/app
-COPY package*.json ./
-RUN npm install
-COPY . .
-ENV NODE_ENV production
-EXPOSE 8080
-CMD ["npm", "start"]
-```
+A [Dockerfile](Dockerfile) was created to containerize the Node.js application. Below is the content of the Dockerfile:
 
 ### 3. Setting up the Kubernetes Cluster
 The Kubernetes cluster was created using Google Kubernetes Engine (GKE) to manage containerized applications.
 
 ### 4. Creating the CI/CD Pipeline
-The CI/CD process is automated with a [gitlab-ci.yaml](.gitlab-ci.yml). file that defines three stages: build, update, and deploy.
+The CI/CD process is automated with a [gitlab-ci.yaml](.gitlab-ci.yml) file that defines three stages: build, update, and deploy.
 Below is the `.gitlab-ci.yaml` configuration used to automate the CI/CD process for the **nodejs-express-mysql** project. This pipeline includes three stages: `build`, `update`, and `deploy`.
 
 ### Pipeline Stages
