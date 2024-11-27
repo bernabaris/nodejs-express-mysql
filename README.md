@@ -42,10 +42,10 @@ Below is the `.gitlab-ci.yaml` configuration used to automate the CI/CD process 
     - Pushes the image to the GitLab Container Registry.
 
 2. **Update Stage**
-    - Updates the `appVersion` in the Helm chart.
+    - Updates the `appVersion` in the Chart.yaml.
     - Pushes the updated chart back to the GitLab repository.
 
-3. **Deploy Stage**
+3. **Deploy Stage(Currently disabled)**
     - Deploys the application to the Kubernetes cluster using the Helm chart.
 
 ---
