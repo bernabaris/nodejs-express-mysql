@@ -46,7 +46,7 @@ Below is the `.gitlab-ci.yaml` configuration used to automate the CI/CD process 
     - Pushes the updated chart back to the GitLab repository.
 
 3. **Deploy Stage(Currently disabled)**
-    - Deploys the application to the Kubernetes cluster using the Helm chart.
+    - Deploys the application to the Kubernetes cluster using the Helm chart. (Note: ArgoCD currently continuous development part.)
 
 ---
 
