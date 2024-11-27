@@ -25,9 +25,9 @@ build:
     - echo "Building application..."
     - echo "Reading current version..."
     - CURRENT_VERSION=$(yq '.appVersion' chart/Chart.yaml)
-    - echo "Current version: $CURRENT_VERSION"
+    - echo "Current version $CURRENT_VERSION"
     - NEW_VERSION=$(echo $CURRENT_VERSION | awk -F. '{$3+=1; print $1"."$2"."$3}')
-    - echo "New version: $NEW_VERSION"
+    - echo "New version $NEW_VERSION"
     - docker build -t $DOCKER_IMAGE:$NEW_VERSION .
     - docker push $DOCKER_IMAGE:$NEW_VERSION
   artifacts:
@@ -38,14 +38,14 @@ update-chart-version:
   stage: update
   script:
     - NEW_VERSION=$(cat .new_version)
-    - echo "Updating Chart.yaml with new version: $NEW_VERSION"
+    - echo "Updating Chart.yaml with new version $NEW_VERSION"
     - yq e -i ".appVersion = \"$NEW_VERSION\"" chart/Chart.yaml
     - echo "Updated Chart.yaml:"
     - cat chart/Chart.yaml
     - git config --global user.name "GitLab CI"
     - git config --global user.email "ci@example.com"
     - git add chart/Chart.yaml
-    - git commit -m "ci: Bump appVersion to $NEW_VERSION after Docker push"
+    - git commit -m "ci - Bump appVersion to $NEW_VERSION after Docker push"
     - git push origin $CI_COMMIT_BRANCH
   needs: [ "build" ]
 
