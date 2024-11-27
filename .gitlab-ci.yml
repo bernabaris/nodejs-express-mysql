@@ -49,7 +49,7 @@ update_chart_version:
     - git checkout -b $CI_DEFAULT_BRANCH
     - git add chart/Chart.yaml
     - git commit -m "ci - Bump appVersion to $NEW_VERSION after Docker push"
-    - git push origin $CI_COMMIT_BRANCH
+    - git push https://$CI_CD_TOKEN@gitlab.com/bernabaris/nodejs-express-mysql.git HEAD:$CI_COMMIT_REF_NAME
   needs: [ "build" ]
 
 .deploy:
