@@ -35,6 +35,10 @@ build:
   artifacts:
     paths:
       - .new_version
+  rules:
+    - changes:
+        - chart/**
+
 
 update_chart_version:
   stage: update
