@@ -31,7 +31,7 @@ CMD ["npm", "start"]
 The Kubernetes cluster was created using Google Kubernetes Engine (GKE) to manage containerized applications.
 
 ### 4. Creating the CI/CD Pipeline
-The CI/CD process is automated with a [gitlab-ci.yaml](.gitlab-ci.yaml). file that defines three stages: build, update, and deploy.
+The CI/CD process is automated with a [gitlab-ci.yaml](.gitlab-ci.yml). file that defines three stages: build, update, and deploy.
 Below is the `.gitlab-ci.yaml` configuration used to automate the CI/CD process for the **nodejs-express-mysql** project. This pipeline includes three stages: `build`, `update`, and `deploy`.
 
 ### Pipeline Stages
