@@ -14,7 +14,7 @@ The example GitHub repository was imported into the GitLab platform to create a 
 ---
 
 ### 2. Docker
-A [Dockerfile](Dockerfile) was created to containerize the Node.js application. Below is the content of the Dockerfile:
+A [Dockerfile](Dockerfile) was created to containerize the Node.js application.
 
 ### 3. Kubernetes Cluster
 The Kubernetes cluster was created using Google Kubernetes Engine (GKE) to manage containerized applications.
