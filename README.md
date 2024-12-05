@@ -9,7 +9,7 @@ This project demonstrates creating a CI/CD pipeline for a Node.js Express applic
 ## Details
 
 ### 1. Project
-The example GitHub repository was imported into the GitLab platform to create a new project named **nodejs-express-mysql**.
+The example GitHub repository was imported into the GitLab platform to create a new project named [nodejs-express-mysql](https://github.com/bezkoder/nodejs-express-mysql).
 
 ---
 
