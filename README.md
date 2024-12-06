@@ -31,7 +31,7 @@ The CI/CD process is automated with a [gitlab-ci.yaml](.gitlab-ci.yml) file that
     - Pushes the image to the GitLab Container Registry.
 
 2. **Update Stage**
-    - Updates the `appVersion` in the Chart.yaml.
+    - Updates the `appVersion` in the [Chart.yaml](chart/Chart.yaml) .
     - Pushes the updated chart back to the GitLab repository.
 
 3. **Deploy Stage(Currently disabled)**
