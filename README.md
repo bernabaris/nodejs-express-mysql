@@ -78,6 +78,7 @@ To make the application deployment more manageable and visualized, **ArgoCD** wa
    ```bash
    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 ## Resources:
+- [https://github.com/bitnami/charts/blob/main/bitnami/mysql/values.yaml]
 - [https://medium.com/@jaydeepawar4912/gitlab-ci-cd-to-deploy-applications-on-gke-806658160534]
 - [https://github.com/helm/examples.git]
 - [https://medium.com/@harshaljethwa19/deploying-an-application-to-argocd-using-helm-part-2-of-ci-cd-using-argocd-cd6a6c7a3047]
